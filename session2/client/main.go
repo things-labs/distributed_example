@@ -6,12 +6,17 @@ import (
 	"log"
 
 	"google.golang.org/grpc"
+	"google.golang.org/grpc/credentials"
 
 	"github.com/thinkgos/grpcexample/session1/services"
 )
 
 func main() {
-	conn, err := grpc.Dial(":8081", grpc.WithInsecure())
+	creds, err := credentials.NewClientTLSFromFile("../ssl/no_password_server.crt", "thinkgos.cn")
+	if err != nil {
+		log.Fatal(err)
+	}
+	conn, err := grpc.Dial(":8081", grpc.WithTransportCredentials(creds))
 	if err != nil {
 		log.Fatalf("连接GRPC服务端失败 %v\n", err)
 	}
