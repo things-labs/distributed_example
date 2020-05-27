@@ -11,7 +11,7 @@ import (
 )
 
 func main() {
-	creds, err := credentials.NewServerTLSFromFile("../ssl/no_password_server.crt", "../ssl/no_password_server.key")
+	creds, err := credentials.NewServerTLSFromFile("../../ssl/no_password_server.crt", "../../ssl/no_password_server.key")
 	if err != nil {
 		log.Fatal(err)
 	}
