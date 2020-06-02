@@ -23,11 +23,8 @@ func main() {
 func routers() http.Handler {
 	router := gin.Default()
 
-	router.GET("/user", func(c *gin.Context) {
-		c.JSON(http.StatusOK, gin.H{"info": "api"})
-	})
-	router.GET("/news", func(c *gin.Context) {
-		c.JSON(http.StatusOK, gin.H{"info": "news"})
+	router.GET("/", func(c *gin.Context) {
+		c.JSON(http.StatusOK, gin.H{"info": "index"})
 	})
 	return router
 }
