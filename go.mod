@@ -1,4 +1,4 @@
-module github.com/thinkgos/grpcexample
+module github.com/thinkgos/distributed
 
 go 1.14
 

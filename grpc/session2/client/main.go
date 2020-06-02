@@ -8,7 +8,7 @@ import (
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials"
 
-	"github.com/thinkgos/grpcexample/grpc/session3/services"
+	"github.com/thinkgos/distributed/grpc/session3/services"
 )
 
 func main() {

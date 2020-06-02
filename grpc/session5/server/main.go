@@ -13,7 +13,7 @@ import (
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials"
 
-	"github.com/thinkgos/grpcexample/grpc/session5/services"
+	"github.com/thinkgos/distributed/grpc/session5/services"
 )
 
 func GotServerCrt() credentials.TransportCredentials {
