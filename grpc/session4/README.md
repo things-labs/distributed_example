@@ -1,4 +1,4 @@
-# 双向认证 ssl grpc
+# 双向认证 grpc http with ssl
 
 
 ## ssl证书生成过程

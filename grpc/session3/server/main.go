@@ -27,5 +27,6 @@ func main() {
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		rpcServer.ServeHTTP(w, r)
 	})
-	log.Fatal(http.ListenAndServeTLS(":8081", "../../ssl/no_password_server.crt", "../../ssl/no_password_server.key", nil))
+	err = http.ListenAndServeTLS(":8081", "../../ssl/no_password_server.crt", "../../ssl/no_password_server.key", nil)
+	log.Fatal(err)
 }
