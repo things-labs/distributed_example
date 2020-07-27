@@ -50,7 +50,6 @@ func gotClientCrt() credentials.TransportCredentials {
 
 }
 func main() {
-	// 服务端
 	rpcServer := grpc.NewServer(grpc.Creds(GotServerCrt()))
 	services.RegisterProdServiceServer(rpcServer, new(services.ProdService))
 	listen, err := net.Listen("tcp", ":8081")
@@ -64,7 +63,8 @@ func main() {
 	//})
 	//log.Fatal(http.ListenAndServeTLS(":8081", "../../cert/server.pem", "../../cert/server.key", nil))
 
-	// http server grpc gateway
+	// http server grpc
+
 	gmux := runtime.NewServeMux()
 	opt := []grpc.DialOption{grpc.WithTransportCredentials(gotClientCrt())}
 	err = services.RegisterProdServiceHandlerFromEndpoint(context.Background(), gmux, "localhost:8081", opt)

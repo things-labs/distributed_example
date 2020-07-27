@@ -37,9 +37,13 @@ func main() {
 	defer conn.Close()
 	prodClient := services.NewProdServiceClient(conn)
 	prodRes, err := prodClient.GetProductStock(context.Background(), &services.ProdRequest{ProdId: 12})
-
 	if err != nil {
 		log.Fatalf("请求GRPC服务端失败 %v\n", err)
 	}
 	fmt.Println(prodRes.ProdStock)
+	prodList, err := prodClient.GetProdStocks(context.Background(), &services.QuerySize{Size: 12})
+	if err != nil {
+		log.Fatalf("请求GRPC服务端失败 %v\n", err)
+	}
+	fmt.Println(prodList.Prodres)
 }

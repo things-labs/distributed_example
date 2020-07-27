@@ -15,8 +15,8 @@ func main() {
 	if err != nil {
 		log.Fatalf("连接GRPC服务端失败 %v\n", err)
 	}
-
 	defer conn.Close()
+
 	prodClient := services.NewProdServiceClient(conn)
 	prodRes, err := prodClient.GetProductStock(context.Background(), &services.ProdRequest{ProdId: 12})
 

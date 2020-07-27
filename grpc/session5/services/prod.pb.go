@@ -125,6 +125,100 @@ func (x *ProdResponse) GetProdStock() int32 {
 	return 0
 }
 
+type QuerySize struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Size int32 `protobuf:"varint,1,opt,name=size,proto3" json:"size,omitempty"`
+}
+
+func (x *QuerySize) Reset() {
+	*x = QuerySize{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_prod_proto_msgTypes[2]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *QuerySize) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*QuerySize) ProtoMessage() {}
+
+func (x *QuerySize) ProtoReflect() protoreflect.Message {
+	mi := &file_prod_proto_msgTypes[2]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use QuerySize.ProtoReflect.Descriptor instead.
+func (*QuerySize) Descriptor() ([]byte, []int) {
+	return file_prod_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *QuerySize) GetSize() int32 {
+	if x != nil {
+		return x.Size
+	}
+	return 0
+}
+
+type ProdResponseList struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Prodres []*ProdResponse `protobuf:"bytes,1,rep,name=prodres,proto3" json:"prodres,omitempty"`
+}
+
+func (x *ProdResponseList) Reset() {
+	*x = ProdResponseList{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_prod_proto_msgTypes[3]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *ProdResponseList) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ProdResponseList) ProtoMessage() {}
+
+func (x *ProdResponseList) ProtoReflect() protoreflect.Message {
+	mi := &file_prod_proto_msgTypes[3]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ProdResponseList.ProtoReflect.Descriptor instead.
+func (*ProdResponseList) Descriptor() ([]byte, []int) {
+	return file_prod_proto_rawDescGZIP(), []int{3}
+}
+
+func (x *ProdResponseList) GetProdres() []*ProdResponse {
+	if x != nil {
+		return x.Prodres
+	}
+	return nil
+}
+
 var File_prod_proto protoreflect.FileDescriptor
 
 var file_prod_proto_rawDesc = []byte{
@@ -136,14 +230,23 @@ var file_prod_proto_rawDesc = []byte{
 	0x49, 0x64, 0x22, 0x2d, 0x0a, 0x0c, 0x50, 0x72, 0x6f, 0x64, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e,
 	0x73, 0x65, 0x12, 0x1d, 0x0a, 0x0a, 0x70, 0x72, 0x6f, 0x64, 0x5f, 0x73, 0x74, 0x6f, 0x63, 0x6b,
 	0x18, 0x01, 0x20, 0x01, 0x28, 0x05, 0x52, 0x09, 0x70, 0x72, 0x6f, 0x64, 0x53, 0x74, 0x6f, 0x63,
-	0x6b, 0x32, 0x5c, 0x0a, 0x0b, 0x50, 0x72, 0x6f, 0x64, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65,
-	0x12, 0x4d, 0x0a, 0x0f, 0x47, 0x65, 0x74, 0x50, 0x72, 0x6f, 0x64, 0x75, 0x63, 0x74, 0x53, 0x74,
-	0x6f, 0x63, 0x6b, 0x12, 0x0c, 0x2e, 0x50, 0x72, 0x6f, 0x64, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73,
-	0x74, 0x1a, 0x0d, 0x2e, 0x50, 0x72, 0x6f, 0x64, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65,
-	0x22, 0x1d, 0x82, 0xd3, 0xe4, 0x93, 0x02, 0x17, 0x12, 0x15, 0x2f, 0x70, 0x72, 0x6f, 0x64, 0x2f,
-	0x73, 0x74, 0x6f, 0x63, 0x6b, 0x2f, 0x7b, 0x70, 0x72, 0x6f, 0x64, 0x5f, 0x69, 0x64, 0x7d, 0x42,
-	0x0c, 0x5a, 0x0a, 0x2e, 0x3b, 0x73, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x73, 0x62, 0x06, 0x70,
-	0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x6b, 0x22, 0x1f, 0x0a, 0x09, 0x51, 0x75, 0x65, 0x72, 0x79, 0x53, 0x69, 0x7a, 0x65, 0x12, 0x12,
+	0x0a, 0x04, 0x73, 0x69, 0x7a, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x05, 0x52, 0x04, 0x73, 0x69,
+	0x7a, 0x65, 0x22, 0x3b, 0x0a, 0x10, 0x50, 0x72, 0x6f, 0x64, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e,
+	0x73, 0x65, 0x4c, 0x69, 0x73, 0x74, 0x12, 0x27, 0x0a, 0x07, 0x70, 0x72, 0x6f, 0x64, 0x72, 0x65,
+	0x73, 0x18, 0x01, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x0d, 0x2e, 0x50, 0x72, 0x6f, 0x64, 0x52, 0x65,
+	0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x52, 0x07, 0x70, 0x72, 0x6f, 0x64, 0x72, 0x65, 0x73, 0x32,
+	0x8c, 0x01, 0x0a, 0x0b, 0x50, 0x72, 0x6f, 0x64, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x12,
+	0x4d, 0x0a, 0x0f, 0x47, 0x65, 0x74, 0x50, 0x72, 0x6f, 0x64, 0x75, 0x63, 0x74, 0x53, 0x74, 0x6f,
+	0x63, 0x6b, 0x12, 0x0c, 0x2e, 0x50, 0x72, 0x6f, 0x64, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74,
+	0x1a, 0x0d, 0x2e, 0x50, 0x72, 0x6f, 0x64, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22,
+	0x1d, 0x82, 0xd3, 0xe4, 0x93, 0x02, 0x17, 0x12, 0x15, 0x2f, 0x70, 0x72, 0x6f, 0x64, 0x2f, 0x73,
+	0x74, 0x6f, 0x63, 0x6b, 0x2f, 0x7b, 0x70, 0x72, 0x6f, 0x64, 0x5f, 0x69, 0x64, 0x7d, 0x12, 0x2e,
+	0x0a, 0x0d, 0x47, 0x65, 0x74, 0x50, 0x72, 0x6f, 0x64, 0x53, 0x74, 0x6f, 0x63, 0x6b, 0x73, 0x12,
+	0x0a, 0x2e, 0x51, 0x75, 0x65, 0x72, 0x79, 0x53, 0x69, 0x7a, 0x65, 0x1a, 0x11, 0x2e, 0x50, 0x72,
+	0x6f, 0x64, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x4c, 0x69, 0x73, 0x74, 0x42, 0x0c,
+	0x5a, 0x0a, 0x2e, 0x3b, 0x73, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x73, 0x62, 0x06, 0x70, 0x72,
+	0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -158,19 +261,24 @@ func file_prod_proto_rawDescGZIP() []byte {
 	return file_prod_proto_rawDescData
 }
 
-var file_prod_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
+var file_prod_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
 var file_prod_proto_goTypes = []interface{}{
-	(*ProdRequest)(nil),  // 0: ProdRequest
-	(*ProdResponse)(nil), // 1: ProdResponse
+	(*ProdRequest)(nil),      // 0: ProdRequest
+	(*ProdResponse)(nil),     // 1: ProdResponse
+	(*QuerySize)(nil),        // 2: QuerySize
+	(*ProdResponseList)(nil), // 3: ProdResponseList
 }
 var file_prod_proto_depIdxs = []int32{
-	0, // 0: ProdService.GetProductStock:input_type -> ProdRequest
-	1, // 1: ProdService.GetProductStock:output_type -> ProdResponse
-	1, // [1:2] is the sub-list for method output_type
-	0, // [0:1] is the sub-list for method input_type
-	0, // [0:0] is the sub-list for extension type_name
-	0, // [0:0] is the sub-list for extension extendee
-	0, // [0:0] is the sub-list for field type_name
+	1, // 0: ProdResponseList.prodres:type_name -> ProdResponse
+	0, // 1: ProdService.GetProductStock:input_type -> ProdRequest
+	2, // 2: ProdService.GetProdStocks:input_type -> QuerySize
+	1, // 3: ProdService.GetProductStock:output_type -> ProdResponse
+	3, // 4: ProdService.GetProdStocks:output_type -> ProdResponseList
+	3, // [3:5] is the sub-list for method output_type
+	1, // [1:3] is the sub-list for method input_type
+	1, // [1:1] is the sub-list for extension type_name
+	1, // [1:1] is the sub-list for extension extendee
+	0, // [0:1] is the sub-list for field type_name
 }
 
 func init() { file_prod_proto_init() }
@@ -203,6 +311,30 @@ func file_prod_proto_init() {
 				return nil
 			}
 		}
+		file_prod_proto_msgTypes[2].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*QuerySize); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_prod_proto_msgTypes[3].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*ProdResponseList); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
@@ -210,7 +342,7 @@ func file_prod_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_prod_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   2,
+			NumMessages:   4,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
@@ -237,6 +369,7 @@ const _ = grpc.SupportPackageIsVersion6
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
 type ProdServiceClient interface {
 	GetProductStock(ctx context.Context, in *ProdRequest, opts ...grpc.CallOption) (*ProdResponse, error)
+	GetProdStocks(ctx context.Context, in *QuerySize, opts ...grpc.CallOption) (*ProdResponseList, error)
 }
 
 type prodServiceClient struct {
@@ -256,9 +389,19 @@ func (c *prodServiceClient) GetProductStock(ctx context.Context, in *ProdRequest
 	return out, nil
 }
 
+func (c *prodServiceClient) GetProdStocks(ctx context.Context, in *QuerySize, opts ...grpc.CallOption) (*ProdResponseList, error) {
+	out := new(ProdResponseList)
+	err := c.cc.Invoke(ctx, "/ProdService/GetProdStocks", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // ProdServiceServer is the server API for ProdService service.
 type ProdServiceServer interface {
 	GetProductStock(context.Context, *ProdRequest) (*ProdResponse, error)
+	GetProdStocks(context.Context, *QuerySize) (*ProdResponseList, error)
 }
 
 // UnimplementedProdServiceServer can be embedded to have forward compatible implementations.
@@ -267,6 +410,9 @@ type UnimplementedProdServiceServer struct {
 
 func (*UnimplementedProdServiceServer) GetProductStock(context.Context, *ProdRequest) (*ProdResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetProductStock not implemented")
+}
+func (*UnimplementedProdServiceServer) GetProdStocks(context.Context, *QuerySize) (*ProdResponseList, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetProdStocks not implemented")
 }
 
 func RegisterProdServiceServer(s *grpc.Server, srv ProdServiceServer) {
@@ -291,6 +437,24 @@ func _ProdService_GetProductStock_Handler(srv interface{}, ctx context.Context, 
 	return interceptor(ctx, in, info, handler)
 }
 
+func _ProdService_GetProdStocks_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(QuerySize)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ProdServiceServer).GetProdStocks(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/ProdService/GetProdStocks",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ProdServiceServer).GetProdStocks(ctx, req.(*QuerySize))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 var _ProdService_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "ProdService",
 	HandlerType: (*ProdServiceServer)(nil),
@@ -298,6 +462,10 @@ var _ProdService_serviceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetProductStock",
 			Handler:    _ProdService_GetProductStock_Handler,
+		},
+		{
+			MethodName: "GetProdStocks",
+			Handler:    _ProdService_GetProdStocks_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
