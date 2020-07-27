@@ -14,7 +14,7 @@ func main() {
 	// 	log.Fatal("dial error:", err)
 	// }
 	//
-	// // 这里，这里😁
+	// 这里，这里😁
 	// client := rpc.NewClientWithCodec(jsonrpc.NewClientCodec(conn))
 
 	client, err := jsonrpc.Dial("tcp", ":1234")
