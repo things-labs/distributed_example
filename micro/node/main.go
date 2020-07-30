@@ -6,8 +6,8 @@ import (
 
 	"github.com/gin-gonic/gin"
 	"github.com/hashicorp/consul/api"
-	"github.com/micro/go-micro/web"
-	"github.com/micro/go-plugins/registry/consul"
+	"github.com/micro/go-micro/v2/web"
+	"github.com/micro/go-plugins/registry/consul/v2"
 )
 
 func main() {
@@ -16,6 +16,7 @@ func main() {
 		web.Name("hello"),
 		web.Handler(routers()), // 将gin的router放入
 		web.Registry(reg),
+		web.Address(":8080"),
 	)
 	server.Init()
 	server.Run()

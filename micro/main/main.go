@@ -7,8 +7,8 @@ import (
 
 	"github.com/gin-gonic/gin"
 	"github.com/hashicorp/consul/api"
-	"github.com/micro/go-micro/client/selector"
-	"github.com/micro/go-plugins/registry/consul"
+	"github.com/micro/go-micro/v2/client/selector"
+	"github.com/micro/go-plugins/registry/consul/v2"
 )
 
 func main() {
