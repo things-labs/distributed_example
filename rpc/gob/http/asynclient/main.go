@@ -9,16 +9,19 @@ import (
 	"github.com/thinkgos/distributed/rpc/method"
 )
 
+// rpc http async client
 func main() {
 	client, err := rpc.DialHTTP("tcp", ":1234")
 	if err != nil {
 		log.Fatal("dialing:", err)
 	}
 
+	// Arith.Multiply
 	args1 := &method.Args{7, 8}
 	var reply int
 	multiplyReply := client.Go("Arith.Multiply", args1, &reply, nil)
 
+	// Arith.Divide
 	args2 := &method.Args{15, 6}
 	var quo method.Quotient
 	divideReply := client.Go("Arith.Divide", args2, &quo, nil)

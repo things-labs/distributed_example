@@ -8,6 +8,7 @@ import (
 	"github.com/thinkgos/distributed/rpc/method"
 )
 
+// rpc http server
 func main() {
 	rpc.Register(new(method.Arith)) // 注册服务
 	rpc.HandleHTTP()
