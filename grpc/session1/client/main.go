@@ -19,7 +19,6 @@ func main() {
 
 	prodClient := services.NewProdServiceClient(conn)
 	prodRes, err := prodClient.GetProductStock(context.Background(), &services.ProdRequest{ProdId: 12})
-
 	if err != nil {
 		log.Fatalf("请求GRPC服务端失败 %v\n", err)
 	}
