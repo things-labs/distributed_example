@@ -33,5 +33,4 @@ func main() {
 		log.Fatal("Divide error:", err)
 	}
 	fmt.Printf("Divide: %d/%d=%d...%d\n", args.A, args.B, quo.Quo, quo.Rem)
-
 }

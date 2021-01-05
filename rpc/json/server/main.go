@@ -23,7 +23,7 @@ func main() {
 			log.Fatal("accept error:", err)
 		}
 
-		// 注意这一行
+		// 注意这一行, 使用json编码
 		go rpc.ServeCodec(jsonrpc.NewServerCodec(conn))
 	}
 }
