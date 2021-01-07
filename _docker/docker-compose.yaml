@@ -2,7 +2,7 @@ version: '3'
 
 services:
   consul-agent:
-    image: consul:latest
+    image: consul:1.9.1
     ports:
     - 8500:8500
     restart: always
