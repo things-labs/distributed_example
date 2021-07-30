@@ -1,0 +1,15 @@
+syntax="proto3";
+option go_package = ".;pb";
+
+message ArithRequest {
+  int32 a = 1; // 数字a
+  int32 b = 2; // 数值b
+}
+
+message ArithResponse {
+  int32 result = 1; // 结果
+}
+
+service Arith {
+  rpc Mul (ArithRequest) returns (ArithResponse);
+}
