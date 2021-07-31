@@ -7,7 +7,8 @@ import (
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials"
 
-	"github.com/thinkgos/distributed/grpc/session2/services"
+	"github.com/thinkgos/distributed/grpc/pb"
+	"github.com/thinkgos/distributed/grpc/services"
 )
 
 func main() {
@@ -16,7 +17,7 @@ func main() {
 		log.Fatal(err)
 	}
 	rpcServer := grpc.NewServer(grpc.Creds(creds))
-	services.RegisterProdServiceServer(rpcServer, new(services.ProdService))
+	pb.RegisterArithServer(rpcServer, new(services.Arith))
 
 	//listen, err := net.Listen("tcp", ":8081")
 	//if err != nil {

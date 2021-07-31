@@ -8,7 +8,7 @@ import (
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials"
 
-	"github.com/thinkgos/distributed/grpc/session3/services"
+	"github.com/thinkgos/distributed/grpc/pb"
 )
 
 func main() {
@@ -22,11 +22,11 @@ func main() {
 	}
 
 	defer conn.Close()
-	prodClient := services.NewProdServiceClient(conn)
-	prodRes, err := prodClient.GetProductStock(context.Background(), &services.ProdRequest{ProdId: 12})
+	arithClient := pb.NewArithClient(conn)
+	response, err := arithClient.Mul(context.Background(), &pb.ArithRequest{A: 12, B: 11})
 
 	if err != nil {
 		log.Fatalf("请求GRPC服务端失败 %v\n", err)
 	}
-	fmt.Println(prodRes.ProdStock)
+	fmt.Println(response.Result)
 }

@@ -17,10 +17,10 @@ func main() {
 	}
 	defer conn.Close()
 
-	prodClient := pb.NewArithClient(conn)
-	prodRes, err := prodClient.Mul(context.Background(), &pb.ArithRequest{A: 12, B: 10})
+	arithClient := pb.NewArithClient(conn)
+	response, err := arithClient.Mul(context.Background(), &pb.ArithRequest{A: 12, B: 11})
 	if err != nil {
 		log.Fatalf("请求GRPC服务端失败 %v\n", err)
 	}
-	fmt.Println(prodRes.Result)
+	fmt.Println(response.Result)
 }
