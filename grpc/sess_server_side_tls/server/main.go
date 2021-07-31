@@ -20,7 +20,7 @@ func main() {
 	rpcServer := grpc.NewServer(grpc.Creds(creds))
 	pb.RegisterArithServer(rpcServer, new(services.Arith))
 
-	// tcp
+	// tcp server
 	go func() {
 		listen, err := net.Listen("tcp", ":8081")
 		if err != nil {
@@ -29,7 +29,7 @@ func main() {
 		rpcServer.Serve(listen)
 	}()
 
-	// http
+	// http server
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		rpcServer.ServeHTTP(w, r)
 	})
