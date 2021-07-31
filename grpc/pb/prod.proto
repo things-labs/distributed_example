@@ -1,6 +1,8 @@
 syntax="proto3";
 option go_package = ".;pb";
 
+// import "google/api/annotations.proto";
+
 message ArithRequest {
   int32 a = 1; // 数字a
   int32 b = 2; // 数值b
@@ -13,3 +15,30 @@ message ArithResponse {
 service Arith {
   rpc Mul (ArithRequest) returns (ArithResponse);
 }
+
+//message ProdRequest {
+//  int32 prod_id = 1; //商品ID
+//}
+//
+//message ProdResponse {
+//  int32 prod_stock = 1; //商品库存
+//}
+//
+//message QuerySize{
+//  int32 size=1;
+//}
+//
+//message ProdResponseList{
+//  repeated ProdResponse prodres=1;
+//}
+
+
+// get /prod/stock/{}
+//service ProdService {
+//  rpc GetProductStock (ProdRequest) returns (ProdResponse) {
+//    option (google.api.http) = {
+//      get: "/prod/stock/{prod_id}"
+//    };
+//  }
+//  rpc GetProdStocks(QuerySize) returns (ProdResponseList);
+//}

@@ -8,8 +8,12 @@ import (
 	"net/http"
 	"strings"
 
+	"github.com/gin-gonic/gin"
 	"github.com/go-kit/kit/endpoint"
+	consulKit "github.com/go-kit/kit/sd/consul"
 	httptransport "github.com/go-kit/kit/transport/http"
+
+	stdconsul "github.com/hashicorp/consul/api"
 )
 
 // ErrEmpty is returned when input string is empty
@@ -93,6 +97,8 @@ func encodeResponse(_ context.Context, w http.ResponseWriter, response interface
 	return json.NewEncoder(w).Encode(response)
 }
 
+const RegistryAddr = "127.0.0.1:8500"
+
 func main() {
 	svc := stringService{}
 
@@ -107,8 +113,59 @@ func main() {
 		decodeCountRequest,
 		encodeResponse,
 	)
+	router := gin.Default()
+	router.GET("/uppercase", gin.WrapH(uppercaseHandler))
+	router.GET("/count", gin.WrapH(countHandler))
 
-	http.Handle("/uppercase", uppercaseHandler)
-	http.Handle("/count", countHandler)
-	log.Fatal(http.ListenAndServe(":8080", nil))
+	asr := stdconsul.AgentServiceRegistration{
+		Kind:              stdconsul.ServiceKindTypical,
+		ID:                "1111",
+		Name:              "stringsvc",
+		Tags:              nil,
+		Port:              8080,
+		Address:           "127.0.0.1",
+		TaggedAddresses:   nil,
+		EnableTagOverride: false,
+		Meta:              nil,
+		Weights:           nil,
+		Check:             nil,
+		Checks:            nil,
+		Proxy:             nil,
+		Connect:           nil,
+	}
+
+	discoverClient, err := NewDiscoveryClient(RegistryAddr, &asr)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	if err = discoverClient.Register(); err != nil {
+		log.Fatal(err)
+	}
+	log.Fatal(router.Run(":8080"))
+}
+
+type DiscoverClient struct {
+	client       consulKit.Client
+	registration *stdconsul.AgentServiceRegistration
+}
+
+func NewDiscoveryClient(addr string, registration *stdconsul.AgentServiceRegistration) (*DiscoverClient, error) {
+	c := stdconsul.DefaultConfig()
+	c.Address = addr
+	consulClient, err := stdconsul.NewClient(c)
+	if err != nil {
+		return nil, err
+	}
+	return &DiscoverClient{
+		consulKit.NewClient(consulClient),
+		registration,
+	}, nil
+}
+
+func (sf DiscoverClient) Register() error {
+	return sf.client.Register(sf.registration)
+}
+func (sf DiscoverClient) Deregister() error {
+	return sf.client.Deregister(sf.registration)
 }
