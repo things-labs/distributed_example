@@ -11,21 +11,21 @@ import (
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials"
 
-	"github.com/thinkgos/distributed/grpc/session3/services"
+	"github.com/thinkgos/distributed/grpc/pb"
 )
 
 func main() {
-	cert, err := tls.LoadX509KeyPair("../../cert/client.pem", "../../cert/client.key")
+	cert, err := tls.LoadX509KeyPair("../../cert/client.crt", "../../cert/client.key")
 	if err != nil {
 		log.Fatalf("LoadX509KeyPair失败 %v\n", err)
 	}
 	certPool := x509.NewCertPool()
 
-	ca, _ := ioutil.ReadFile("../../cert/ca.pem")
+	ca, _ := ioutil.ReadFile("../../cert/ca.crt")
 	certPool.AppendCertsFromPEM(ca)
 	creds := credentials.NewTLS(&tls.Config{
 		Certificates: []tls.Certificate{cert},
-		ServerName:   "localhost",
+		ServerName:   "www.thinkgos.cn",
 		RootCAs:      certPool,
 	})
 
@@ -35,11 +35,10 @@ func main() {
 	}
 
 	defer conn.Close()
-	prodClient := services.NewProdServiceClient(conn)
-	prodRes, err := prodClient.GetProductStock(context.Background(), &services.ProdRequest{ProdId: 12})
-
+	arithClient := pb.NewArithClient(conn)
+	response, err := arithClient.Mul(context.Background(), &pb.ArithRequest{A: 12, B: 20})
 	if err != nil {
 		log.Fatalf("请求GRPC服务端失败 %v\n", err)
 	}
-	fmt.Println(prodRes.ProdStock)
+	fmt.Println(response.Result)
 }
