@@ -12,7 +12,7 @@ import (
 )
 
 func main() {
-	creds, err := credentials.NewClientTLSFromFile("../../ssl/no_password_server.crt", "thinkgos.cn")
+	creds, err := credentials.NewClientTLSFromFile("../../cert/ca.crt", "www.thinkgos.cn")
 	if err != nil {
 		log.Fatal(err)
 	}

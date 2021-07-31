@@ -12,7 +12,7 @@ import (
 )
 
 func main() {
-	creds, err := credentials.NewServerTLSFromFile("../../ssl/no_password_server.crt", "../../ssl/no_password_server.key")
+	creds, err := credentials.NewServerTLSFromFile("../../cert/server.crt", "../../cert/server.key")
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -28,6 +28,6 @@ func main() {
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		rpcServer.ServeHTTP(w, r)
 	})
-	err = http.ListenAndServeTLS(":8081", "../../ssl/no_password_server.crt", "../../ssl/no_password_server.key", nil)
+	err = http.ListenAndServeTLS(":8081", "../../cert/server.crt", "../../cert/server.key", nil)
 	log.Fatal(err)
 }
