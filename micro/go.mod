@@ -12,5 +12,5 @@ require (
 	github.com/micro/go-micro/v2 v2.9.1
 	github.com/micro/go-plugins/registry/consul/v2 v2.9.1
 	github.com/pascaldekloe/goe v0.1.0 // indirect
-	github.com/prometheus/client_golang v1.2.1 // indirect
+	github.com/prometheus/client_golang v1.11.1 // indirect
 )
