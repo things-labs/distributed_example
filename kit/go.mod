@@ -5,7 +5,7 @@ go 1.15
 require (
 	github.com/armon/go-metrics v0.3.9 // indirect
 	github.com/fatih/color v1.12.0 // indirect
-	github.com/gin-gonic/gin v1.7.2
+	github.com/gin-gonic/gin v1.7.7
 	github.com/go-kit/kit v0.11.0
 	github.com/go-playground/validator/v10 v10.8.0 // indirect
 	github.com/google/btree v1.0.0 // indirect
