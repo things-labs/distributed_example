@@ -3,7 +3,7 @@ module github.com/thinkgos/distributed/micro
 go 1.15
 
 require (
-	github.com/gin-gonic/gin v1.7.7
+	github.com/gin-gonic/gin v1.9.0
 	github.com/gogo/protobuf v1.3.2 // indirect
 	github.com/hashicorp/consul/api v1.3.0
 	github.com/hashicorp/go-rootcerts v1.0.1 // indirect
